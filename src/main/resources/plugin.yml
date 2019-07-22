@@ -1,0 +1,4 @@
+name: GraveChests
+version: 1.0
+main: me.ihaq.deathinventory.DeathInventory
+description: Get the items of the player you kill automatically added to your inventory.
