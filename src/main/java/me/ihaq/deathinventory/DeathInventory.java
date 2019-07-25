@@ -6,8 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class DeathInventory extends JavaPlugin implements Listener {
@@ -20,9 +22,14 @@ public class DeathInventory extends JavaPlugin implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
         Player killer = e.getEntity().getKiller();
+        PlayerInventory inventory = killer.getInventory();
         List<ItemStack> drops = e.getDrops();
 
-        killer.getInventory().addItem(drops.toArray(new ItemStack[0]));
+        drops.forEach(itemStack -> {
+            HashMap<Integer, ItemStack> map = inventory.addItem(itemStack);
+            System.out.println(map);
+        });
+        drops.clear();
     }
 
 }
