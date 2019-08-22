@@ -25,11 +25,14 @@ public class DeathInventory extends JavaPlugin implements Listener {
         PlayerInventory inventory = killer.getInventory();
         List<ItemStack> drops = e.getDrops();
 
-        drops.forEach(itemStack -> {
-            HashMap<Integer, ItemStack> map = inventory.addItem(itemStack);
-            System.out.println(map);
-        });
-        drops.clear();
-    }
+        for (int i = 0; i < 36 - inventory.getContents().length; i++) {
+            ItemStack item = drops.remove(i);
+            inventory.addItem(item);
+        }
 
+        if (drops.size() > 0) {
+            killer.sendMessage("Your inventory is now full, the rest of the items have been dropped on the ground.");
+        }
+
+    }
 }
