@@ -9,7 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class DeathInventory extends JavaPlugin implements Listener {
@@ -33,6 +32,5 @@ public class DeathInventory extends JavaPlugin implements Listener {
         if (drops.size() > 0) {
             killer.sendMessage("Your inventory is now full, the rest of the items have been dropped on the ground.");
         }
-
     }
 }
